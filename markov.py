@@ -15,7 +15,7 @@ def make_chains(words):
 
     for i in range(len(words) - 2):
         key = (words[i], words[i+1])
-        chains_of_words[key] = chains_of_words.get(key, [])
+        chains_of_words[key] = chains_of_words.setdefault(key, [])
         chains_of_words[key].append(words[i+2])
     return chains_of_words
 
