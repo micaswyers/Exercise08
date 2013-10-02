@@ -20,8 +20,6 @@ def make_text(chains):
     list_of_keys = chains.keys()
     key = choice(list_of_keys)
     next_word = choice(chains[key])
-    
-
 
     sentence = "%s %s %s" % (key[0], key[1], next_word)
 
@@ -37,8 +35,6 @@ def make_text(chains):
         else:
             break
 
-        # to do: make it end w punctuation
-
     sentence = sentence.rstrip(',"\'!-')
     if not "." in sentence[-1]:
         if "?" in sentence[-1]:
@@ -47,9 +43,6 @@ def make_text(chains):
             sentence += "."    
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
-
-
-
 
 
 def main():
