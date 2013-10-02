@@ -4,7 +4,7 @@ from sys import argv
 script, first = argv
 import twitter
 
-api = twitter.Api(//SECRET//)
+api = twitter.Api(//secret//)
 
 api.VerifyCredentials()
 
@@ -56,15 +56,19 @@ def main():
     random_text = make_text(chain_dict)
     print random_text
 
-    tweet = raw_input("Tweet this? ")
+    
 
-    if tweet == "y":
-         status = api.PostUpdate('%s' % random_text)
-         return status
-    elif tweet == "n":
-        pass
-    else:
-        print "Enter 'y' or 'n'"
+    while True:
+        tweet = raw_input("Tweet this? ")
+        if tweet == "y":
+             status = api.PostUpdate('%s' % random_text)
+             return status
+             return False
+        elif tweet == "n":
+            return False
+        else:
+            print "Enter 'y' or 'n'"
+ 
 
 
 if __name__ == "__main__":
