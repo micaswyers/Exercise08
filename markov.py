@@ -30,7 +30,7 @@ def make_text(chains):
         
         if key in chains:
             next_word = choice(chains[key])
-            if len((sentence + next_word)) < 140:
+            if len((sentence + next_word)) < 139:
                 sentence += (" " + next_word)    
             else:
                 break
@@ -38,7 +38,13 @@ def make_text(chains):
             break
 
         # to do: make it end w punctuation
-    
+
+    sentence = sentence.rstrip(',"\'!-')
+    if not "." in sentence[-1]:
+        if "?" in sentence[-1]:
+            pass
+        else:
+            sentence += "."    
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
