@@ -2,6 +2,11 @@
 from random import choice
 from sys import argv
 script, first = argv
+import twitter
+
+api = twitter.Api(//Secret//)
+
+api.VerifyCredentials()
 
 def make_chains(words):
     """Takes an input text as a string and returns a dictionary of
@@ -28,7 +33,7 @@ def make_text(chains):
         
         if key in chains:
             next_word = choice(chains[key])
-            if len((sentence + next_word)) < 139:
+            if len((sentence + next_word)) < 137:
                 sentence += (" " + next_word)    
             else:
                 break
@@ -40,7 +45,7 @@ def make_text(chains):
         if "?" in sentence[-1]:
             pass
         else:
-            sentence += "."    
+            sentence += "..."    
     sentence = sentence[0].upper() + sentence[1:]
     return sentence
 
@@ -49,7 +54,9 @@ def main():
     words = open(first).read().split()
     chain_dict = make_chains(words)
     random_text = make_text(chain_dict)
-    print random_text
+    status = api.PostUpdate('%s' % random_text)
+    print status.text
+
 
 if __name__ == "__main__":
     main()
