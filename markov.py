@@ -14,8 +14,9 @@ def make_chains(words):
     chains_of_words = {}
 
     for i in range(len(words) - 2):
-        chains_of_words[(words[i], words[i+1])] = chains_of_words.get((words[i], words[i+1]), [])
-        chains_of_words[(words[i], words[i+1])].append(words[i+2])
+        key = (words[i], words[i+1])
+        chains_of_words[key] = chains_of_words.get(key, [])
+        chains_of_words[key].append(words[i+2])
     return chains_of_words
 
 def make_text(chains):
